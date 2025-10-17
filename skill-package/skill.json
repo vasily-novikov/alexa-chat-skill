@@ -5,22 +5,22 @@
         "en-US": {
           "summary": "A friendly chat partner for teenagers",
           "examplePhrases": [
-            "Alexa, open Galaxy Mentor",
-            "Alexa, ask Galaxy Mentor how are you",
-            "Alexa, tell Galaxy Mentor I had a cool day"
+            "Alexa, open Mystic Joda",
+            "Alexa, ask Mystic Joda how are you",
+            "Alexa, tell Mystic Joda I had a cool day"
           ],
-          "name": "Galaxy Mentor",
-          "description": "Galaxy Mentor is an AI-powered conversation partner for teenagers. Talk about games, school, ideas, or just chat about your day. The chat partner uses OpenAI to provide natural and friendly conversations."
+          "name": "Mystic Joda",
+          "description": "Mystic Joda is an AI-powered conversation partner for teenagers. Talk about games, school, ideas, or just chat about your day. The chat partner uses OpenAI to provide natural and friendly conversations."
         },
         "de-DE": {
           "summary": "Ein freundlicher Chat-Partner für Teenager",
           "examplePhrases": [
-            "Alexa, öffne Galaxy Mentor",
-            "Alexa, frage Galaxy Mentor wie geht's",
-            "Alexa, sage Galaxy Mentor ich hatte einen coolen Tag"
+            "Alexa, öffne Mystic Joda",
+            "Alexa, frage Mystic Joda wie geht's",
+            "Alexa, sage Mystic Joda ich hatte einen coolen Tag"
           ],
-          "name": "Galaxy Mentor",
-          "description": "Galaxy Mentor ist ein KI-gestützter Gesprächspartner für Teenager. Rede über Spiele, Schule, Ideen oder einfach über deinen Tag. Der Chat-Partner nutzt OpenAI, um natürliche und freundliche Gespräche zu führen."
+          "name": "Mystic Joda",
+          "description": "Mystic Joda ist ein KI-gestützter Gesprächspartner für Teenager. Rede über Spiele, Schule, Ideen oder einfach über deinen Tag. Der Chat-Partner nutzt OpenAI, um natürliche und freundliche Gespräche zu führen."
         }
       },
       "isAvailableWorldwide": false,
