@@ -95,7 +95,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         return handler_input.request_envelope.request.object_type == "LaunchRequest"
 
     def handle(self, handler_input):
-        speak = '<voice name="Hans">Hallo Ivan! Ich bin dein verrückter Chat-Kumpel. Was geht ab?</voice>'
+        speak = '<voice name="Hans">Hallo Ivan! Ich bin dein verrückter Chat-Kumpel Yoda. Was geht ab?</voice>'
         return handler_input.response_builder.speak(speak).ask(speak).response
 
 
