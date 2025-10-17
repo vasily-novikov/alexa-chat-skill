@@ -5,12 +5,12 @@
         "de-DE": {
           "summary": "Ein freundlicher Chat-Partner für Teenager",
           "examplePhrases": [
-            "Alexa, öffne Chat Kumpel",
-            "Alexa, frage Chat Kumpel wie geht's",
-            "Alexa, sage Chat Kumpel ich hatte einen coolen Tag"
+            "Alexa, öffne Yoda",
+            "Alexa, frage Yoda wie geht's",
+            "Alexa, sage Yoda ich hatte einen coolen Tag"
           ],
-          "name": "Chat Kumpel",
-          "description": "Chat Kumpel ist ein KI-gestützter Gesprächspartner für Teenager. Rede über Spiele, Schule, Ideen oder einfach über deinen Tag. Der Chat-Partner nutzt OpenAI, um natürliche und freundliche Gespräche zu führen."
+          "name": "Yoda",
+          "description": "Yoda ist ein KI-gestützter Gesprächspartner für Teenager. Rede über Spiele, Schule, Ideen oder einfach über deinen Tag. Der Chat-Partner nutzt OpenAI, um natürliche und freundliche Gespräche zu führen."
         }
       },
       "isAvailableWorldwide": false,
