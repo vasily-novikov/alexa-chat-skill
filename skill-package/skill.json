@@ -1,0 +1,30 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "de-DE": {
+          "summary": "Ein freundlicher Chat-Partner für Teenager",
+          "examplePhrases": [
+            "Alexa, öffne Chat Kumpel",
+            "Alexa, frage Chat Kumpel wie geht's",
+            "Alexa, sage Chat Kumpel ich hatte einen coolen Tag"
+          ],
+          "name": "Chat Kumpel",
+          "description": "Chat Kumpel ist ein KI-gestützter Gesprächspartner für Teenager. Rede über Spiele, Schule, Ideen oder einfach über deinen Tag. Der Chat-Partner nutzt OpenAI, um natürliche und freundliche Gespräche zu führen."
+        }
+      },
+      "isAvailableWorldwide": false,
+      "testingInstructions": "Requires OPENAI_API_KEY environment variable to be set in Lambda configuration.",
+      "category": "EDUCATION_AND_REFERENCE",
+      "distributionCountries": ["DE", "AT", "CH"]
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:eu-west-1:ACCOUNT_ID:function:FUNCTION_NAME"
+        }
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}
