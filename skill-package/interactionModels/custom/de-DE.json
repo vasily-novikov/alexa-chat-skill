@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "yoda",
+      "invocationName": "mystic joda",
       "intents": [
         {
           "name": "ChatIntent",
