@@ -11,11 +11,15 @@ from ask_sdk_model import Response
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 OPENAI_URL = "https://api.openai.com/v1/responses"
 MODEL = "o4-mini"
+VOICE_NAME = "Hans"  # Alexa voice for responses
 
 # ~500 tokens = ~1500 characters. Keep total request small and cheap.
 MAX_INPUT_CHARS = 1500
 
 # === Utility helpers ===
+def with_voice(text):
+    """Wrap text with SSML voice tag."""
+    return f'<voice name="{VOICE_NAME}">{text}</voice>'
 def trim_text(text, limit=MAX_INPUT_CHARS):
     """Trim text to a safe length without cutting words mid-way."""
     text = re.sub(r"\s+", " ", text.strip())
@@ -95,7 +99,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         return handler_input.request_envelope.request.object_type == "LaunchRequest"
 
     def handle(self, handler_input):
-        speak = '<voice name="Hans">Hallo Ivan! Ich bin dein verrückter Chat-Kumpel Yoda. Was geht ab?</voice>'
+        speak = with_voice("Hallo Ivan! Ich bin dein verrückter Chat-Kumpel Yoda. Was geht ab?")
         return handler_input.response_builder.speak(speak).ask(speak).response
 
 
@@ -125,14 +129,8 @@ class ChatIntentHandler(AbstractRequestHandler):
         session["conversation_history"] = history[-6:]
         handler_input.attributes_manager.session_attributes = session
 
-        # Optionally log approximate cost (for monitoring)
-        cost = token_count * (0.0006 / 1000 + 0.0024 / 1000)  # rough blended rate
-        print(f"Approximate cost this turn: ${cost:.6f}")
-
         return handler_input.response_builder.speak(
-            f'<voice name="Hans">{ai_reply}</voice>'
-        ).ask(
-            '<voice name="Hans">Willst du noch weiterquatschen?</voice>'
+            with_voice(ai_reply)
         ).response
 
 
@@ -142,7 +140,7 @@ class HelpIntentHandler(AbstractRequestHandler):
         return req.object_type == "IntentRequest" and req.intent.name == "AMAZON.HelpIntent"
 
     def handle(self, handler_input):
-        speak = '<voice name="Hans">Du kannst mit mir über alles reden — Spiele, Schule, Ideen, oder einfach so quatschen!</voice>'
+        speak = with_voice("Du kannst mit mir über alles reden — Spiele, Schule, Ideen, oder einfach so quatschen!")
         return handler_input.response_builder.speak(speak).ask(speak).response
 
 
@@ -156,7 +154,7 @@ class CancelOrStopHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         return handler_input.response_builder.speak(
-            '<voice name="Hans">Tschüss! Bis bald!</voice>'
+            with_voice("Tschüss! Bis bald!")
         ).response
 
 
