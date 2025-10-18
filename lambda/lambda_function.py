@@ -27,10 +27,6 @@ def trim_text(text, limit=MAX_INPUT_CHARS):
         return text
     return text[:limit].rsplit(" ", 1)[0] + "..."
 
-def estimate_tokens(text):
-    """Rough token estimator (≈4 chars/token)."""
-    return len(text) / 4
-
 # === Core OpenAI call ===
 def call_openai(prompt: str, context: str = "") -> tuple[str, int]:
     """Send prompt to OpenAI and return reply + total token estimate."""
@@ -85,12 +81,6 @@ def call_openai(prompt: str, context: str = "") -> tuple[str, int]:
         print("Parse error:", e)
         reply = "Sorry, something went wrong with the reply."
 
-    # --- Estimate total tokens for cost tracking ---
-    input_tokens = estimate_tokens(full_prompt)
-    output_tokens = estimate_tokens(reply)
-    total_tokens = int(input_tokens + output_tokens)
-
-    print(f"Estimated tokens: in={int(input_tokens)}, out={int(output_tokens)}, total={total_tokens}")
     return reply, total_tokens
 
 # === Alexa Handlers ===
