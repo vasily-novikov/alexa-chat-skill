@@ -19,7 +19,7 @@ MAX_INPUT_CHARS = 1500
 # === Utility helpers ===
 def with_voice(text):
     """Wrap text with SSML voice tag."""
-    return f'<voice name="{VOICE_NAME}">{text}</voice>'
+    return f'<voice name="Hans"><prosody rate="85%" pitch="-15%">{text}</prosody></voice>'
 def trim_text(text, limit=MAX_INPUT_CHARS):
     """Trim text to a safe length without cutting words mid-way."""
     text = re.sub(r"\s+", " ", text.strip())
@@ -99,7 +99,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         return handler_input.request_envelope.request.object_type == "LaunchRequest"
 
     def handle(self, handler_input):
-        speak = with_voice("Hallo Ivan! Ich bin dein verrückter Chat-Kumpel Yoda. Was geht ab?")
+        speak = with_voice("Grüße dich, Ivan! Yoda ich bin, dein Chat-Kumpel. Erzählen mir, du willst?")
         return handler_input.response_builder.speak(speak).ask(speak).response
 
 
@@ -112,9 +112,8 @@ class ChatIntentHandler(AbstractRequestHandler):
         slots = handler_input.request_envelope.request.intent.slots
         user_text = slots["utterance"].value if "utterance" in slots and slots["utterance"].value else ""
         if not user_text:
-            return handler_input.response_builder.speak(
-                "I didn’t catch that. Could you say it again?"
-            ).ask("Could you say it again?").response
+            msg = with_voice("Verstanden, ich habe nicht. Wiederholen, du kannst?")
+            return handler_input.response_builder.speak(msg).ask(msg).response
 
         # Load short context
         session = handler_input.attributes_manager.session_attributes
@@ -131,7 +130,7 @@ class ChatIntentHandler(AbstractRequestHandler):
 
         return handler_input.response_builder.speak(
             with_voice(ai_reply)
-        ).response
+        ).ask(with_voice("Weiter reden, du möchtest?")).response
 
 
 class HelpIntentHandler(AbstractRequestHandler):
@@ -140,7 +139,7 @@ class HelpIntentHandler(AbstractRequestHandler):
         return req.object_type == "IntentRequest" and req.intent.name == "AMAZON.HelpIntent"
 
     def handle(self, handler_input):
-        speak = with_voice("Du kannst mit mir über alles reden — Spiele, Schule, Ideen, oder einfach so quatschen!")
+        speak = with_voice("Über alles reden, mit mir du kannst — Spiele, Schule, Ideen. Hmm!")
         return handler_input.response_builder.speak(speak).ask(speak).response
 
 
@@ -154,7 +153,7 @@ class CancelOrStopHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         return handler_input.response_builder.speak(
-            with_voice("Tschüss! Bis bald!")
+            with_voice("Gehen du musst. Auf Wiedersehen, junger Padawan!")
         ).response
 
 
